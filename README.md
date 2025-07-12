@@ -2,7 +2,7 @@ Molika Y | Personal Portfolio
 Welcome to my personal portfolio website, where I showcase my projects, skills, education, and contact details. Built with HTML, CSS, and JavaScript, this website reflects my passion for full-stack development, creative design, and clean, interactive UI/UX.
 
 🔗 View My Portfolio
-(Replace with your live hosted link)
+https://molikaportfolio.netlify.app/
 
 Features
 Responsive and modern design
