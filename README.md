@@ -21,4 +21,5 @@ Formspree (for handling form submissions)
 Google Fonts & Font Awesome for typography and icons
 
 
-
+This portfolio uses Formspree to handle form submissions in the Contact Me section. When a visitor fills in their email and message, the form sends the data directly to my inbox using a secure POST request.
+https://formspree.io
