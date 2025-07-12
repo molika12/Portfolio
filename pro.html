@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Y Molika | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --text: #1f2937;
+      --primary: #6366f1;
+      --secondary: #8b5cf6;
+      --card: #ffffff;
+      --accent: #c7d2fe;
+      --gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --text: #f8fafc;
+      --primary: #a78bfa;
+      --secondary: #c4b5fd;
+      --card: #1e293b;
+      --accent: #312e81;
+      --gradient: linear-gradient(135deg, #4c1d95, #7c3aed);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.4s ease, color 0.4s ease;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      background: var(--card);
+      padding: 1.2rem 0;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background 0.3s;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    #toggle-theme {
+      appearance: none;
+      width: 50px;
+      height: 26px;
+      background: var(--accent);
+      border-radius: 50px;
+      position: relative;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #toggle-theme::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: var(--card);
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    [data-theme="dark"] #toggle-theme::before {
+      transform: translateX(24px);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 6rem 1rem 4rem;
+      background: var(--gradient);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      top: 10%;
+      left: 10%;
+      animation: pulse 6s infinite alternate;
+      filter: blur(40px);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.4); opacity: 0.2; }
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* About Section */
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .profile-pic {
+      width: 280px;
+      height: 300px;
+      border-radius: 20%;
+      background-image: url('photo.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 5px solid var(--primary);
+      flex-shrink: 0;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      margin-right: 52px;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .about-text h2 {
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* Skills Section */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      list-style: none;
+      justify-content: center;
+    }
+
+    .skills-list li {
+      background: var(--accent);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--text);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+      transition: transform 0.3s ease;
+    }
+
+    .skills-list li:hover {
+      transform: translateY(-5px) scale(1.05);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+      transition: top 0.5s;
+    }
+
+    .card:hover::before {
+      top: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      filter: brightness(0.95);
+      transition: filter 0.3s ease;
+      background: var(--accent);
+    }
+
+    .card:hover img {
+      filter: brightness(1);
+    }
+
+    .card-content {
+      padding: 1.4rem;
+    }
+
+    .card-content h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .card-content p {
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    /* Education Section */
+    .edu-list {
+      list-style: none;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .edu-list li {
+      margin-bottom: 1.4rem;
+      background: var(--accent);
+      padding: 1.2rem;
+      border-left: 6px solid var(--primary);
+      border-radius: 8px;
+      font-weight: 500;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Contact Section */
+    #contact {
+      text-align: center;
+    }
+
+    #contact p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    #contact a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    #contact a:hover {
+      color: var(--secondary);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      background: var(--card);
+      color: var(--text);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      nav {
+        justify-content: center;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .about-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .about-text h2 {
+        text-align: center;
+      }
+      
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 4rem 1rem 3rem;
+      }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      
+      .section {
+        padding: 3rem 0;
+      }
+      
+      .skills-list {
+        gap: 0.8rem;
+      }
+      
+      .skills-list li {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+     form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      background: var(--card);
+      color: var(--text);
+    }
+button[type="submit"] {
+  background: var(--gradient);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Yenna Molika</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <button id="toggle-theme" title="Toggle Theme"></button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+  <div class="container fade-in">
+    <h2 id="hero-title">Full-Stack Web Developer</h2>
+    <p id="hero-subtext" style="display: none;"></p>
+    <p>I design and build responsive, interactive websites and applications with clean, modern code.</p>
+  </div>
+</section>
+
+
+
+  <section id="about" class="section fade-in">
+    <div class="container">
+      <div class="about-content">
+        <div class="profile-pic"></div>
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>Hi, I'm Molika Y, a passionate web developer who enjoys building interactive and user-friendly websites. I love bringing ideas to life through code and creating experiences that are both functional and visually appealing. I'm always eager to learn new technologies and improve my skills through real-world projects. From crafting responsive layouts to handling backend logic, I enjoy every step of the development process.
+          <br><br>I have hands-on experience with various web technologies like HTML, CSS, and JavaScript for creating responsive frontends. I also work with tools like Bootstrap and Firebase for faster development and real-time functionality. On the backend, I use PHP and NodeJS to manage data and server-side logic. I'm comfortable working with databases like MySQL and enjoy designing systems that are efficient and reliable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section fade-in">
+    <div class="container">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Bootstrap</li>
+        <li>PHP</li>
+        <li>MySQL</li>
+        <li>Node.js</li>
+        <li>Firebase</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="section fade-in">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="card">
+          <img src="chat.png" alt="Chat Application">
+          <div class="card-content">
+            <h3>Chat Application</h3>
+            <p>A real-time chat platform built with Firebase for seamless messaging and user authentication.
+                  Supports instant message updates, user sign-in, and a clean chat interface.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="price.png" alt="Productivity Tracker">
+          <div class="card-content">
+            <h3>Price Tracker</h3></h3>
+            <p>A web tool that compares product prices across Flipkart, Amazon, and Myntra in real-time.
+                 It helps users find the best deals instantly through a clean, responsive interface.
+
+                   </p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="fake.png" alt="Fake News Detection">
+          <div class="card-content">
+            <h3>Fake News Detection</h3>
+                    <p>A machine learning-based system that classifies news as real or fake using textual analysis.
+                     It ensures information credibility through model training on authentic datasets.</p>
+                  </div>
+        </div>
+        <div class="card">
+          <img src="task.png" alt="Online Exam System">
+          <div class="card-content">
+            <h3>Task Monitor</h3>
+            <p>An intelligent productivity tracker that monitors attendance and website usage.
+                  It analyzes time spent to evaluate user focus and daily performance visually.
+
+                  </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section fade-in">
+    <div class="container">
+      <h2>Education & Experience</h2>
+      <ul class="edu-list">
+        <li><strong>B.Tech in Computer Science</strong> -SRM University AP  (2022–2026) </li>
+        <li><strong>Web Developer Intern</strong> - Coincent (Jan 2024 – Apr 2024)</li>
+                <li><strong>ASW Certification</strong> - Coursera (June 2025 – July 2025)</li>
+
+      </ul>
+    </div>
+  </section>
+<section class="section container" id="contact">
+  <h2>Contact Me</h2>
+  <form action="https://formspree.io/f/xvgqppoq" method="POST">
+    <label for="email">Your Email:</label><br>
+    <input type="email" name="email" id="email" required><br><br>
+
+    <label for="message">Your Message:</label><br>
+    <textarea name="message" id="message" rows="5" required></textarea><br><br>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+
+ <footer style="
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--card);
+  color: var(--text);
+  font-size: 1rem;
+  margin-top: 4rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+">
+  <div style="margin-bottom: 1rem; color: #a78bfa;">
+    <p>Email: <a href="mailto:molika_yenna@gmail.com" style="color: #fff; text-decoration: underline;"> molika_yenna@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/molikay" target="_blank" style="color: #fff; text-decoration: underline;"> github.com/molikay</a></p>
+  </div>
+  <p> Made by Molika Y | AP22110010630</p>
+</footer>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("toggle-theme");
+      const root = document.documentElement;
+
+      // Check for saved theme preference or default to light mode
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        root.setAttribute("data-theme", savedTheme);
+      }
+
+      toggle.addEventListener("click", () => {
+        const currentTheme = root.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        
+        root.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+      });
+
+      // Add smooth scrolling and fade-in animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections for fade-in animation
+      document.querySelectorAll('.section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+      });
+
+      // Add loading animation
+       setTimeout(() => {
+      const subtext = document.getElementById("hero-subtext");
+      if (subtext) {
+        subtext.style.display = "block";
+        subtext.style.opacity = "0";
+        subtext.style.transition = "opacity 1s ease";
+        requestAnimationFrame(() => {
+          subtext.style.opacity = "1";
+        });
+      }
+      document.body.style.opacity = '1';
+    }, 1000);
+  });
+
+    // Add initial loading state
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.3s ease';
+    
+  </script>
+</body>
+
+</html>
